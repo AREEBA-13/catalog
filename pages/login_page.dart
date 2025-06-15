@@ -13,13 +13,14 @@ class _LoginPageState extends State<LoginPage> {
   bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
 
-  moveToHome(BuildContext context) async {
+  Future<void> moveToHome(BuildContext context) async {
     final form = _formKey.currentState;
     if (form != null && form.validate()) {
       setState(() {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
+      if (!mounted) return; // Check if the widget is still mounted
       await Navigator.pushNamed(context, MyRoutes.homeRoute);
       setState(() {
         changeButton = false;
