@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:flutter_application_1/pages/login_page.dart';
+import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:flutter_application_1/utils/routes.dart';
 
 void main() {
-  runApp(myApp());
+  runApp(MyApp());
 }
 
-class myApp extends StatelessWidget {
-  const myApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Material(
-        child: Center(child: Container(child: Text("helloww areeba"))),
-      ),
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light,
+      theme: MyThemes.lighttheme(context),
+      darkTheme: MyThemes.darktheme(context),
+      initialRoute: MyRoutes.homeRoute,
+      routes: {
+        "/": (context) => const LoginPage(),
+        MyRoutes.homeRoute: (context) => const HomePage(),
+        MyRoutes.loginRoute: (context) => const LoginPage(),
+      },
     );
   }
 }
