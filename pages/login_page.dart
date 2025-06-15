@@ -13,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
 
-  Future<void> moveToHome(BuildContext context) async {
+  Future<void> moveToHome() async {
     final form = _formKey.currentState;
     if (form != null && form.validate()) {
       setState(() {
@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                         changeButton ? 50 : 8,
                       ),
                       child: InkWell(
-                        onTap: () => moveToHome(context),
+                        onTap: () => moveToHome(),
                         child: AnimatedContainer(
                           duration: Duration(seconds: 1),
                           height: 50,
