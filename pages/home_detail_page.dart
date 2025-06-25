@@ -1,0 +1,79 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/catalog.dart';
+import 'package:flutter_application_1/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
+
+// This is the detail page for each item in the catalog
+
+class HomeDetailPage extends StatelessWidget {
+  final Item catalog;
+
+  const HomeDetailPage({super.key, required this.catalog});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: OverflowBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          spacing: 8.0,
+          children: [
+            "\$${catalog.price}".text.bold.red700.xl3.make(),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(
+                  MyThemes.darkBluishColor,
+                ),
+                shape: WidgetStateProperty.all(StadiumBorder()),
+              ),
+              child: "BUY".text.make(),
+            ).wh(100, 50),
+          ],
+        ).p24(),
+      ),
+      backgroundColor: MyThemes.creamColor,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Hero(
+              tag: Key(catalog.id.toString()),
+              child: SizedBox(
+                height: 250, // adjust as needed
+                width: double.infinity,
+                child: Image.network(
+                  catalog.image,
+                  fit: BoxFit.contain, // or BoxFit.cover/fitWidth/fitHeight
+                ),
+              ),
+            ).h32(context),
+            Expanded(
+              child: VxArc(
+                height: 30,
+                arcType: VxArcType.convey,
+                edge: VxEdge.top,
+                child: Container(
+                  color: Colors.white,
+                  width: context.screenWidth,
+                  child: Column(
+                    children: [
+                      catalog.name.text.xl4
+                          .color(MyThemes.darkBluishColor)
+                          .xl2
+                          .bold
+                          .make(),
+                      catalog.des.text.textStyle(context.captionStyle).make(),
+                      10.heightBox,
+                    ],
+                  ).py64(),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
