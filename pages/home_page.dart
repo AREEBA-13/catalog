@@ -41,6 +41,11 @@ class _HomePageState extends State<HomePage> {
     // final dummyList = List.generate(100, (index) => CatalogModel.items[0]);
     return Scaffold(
       backgroundColor: MyThemes.creamColor,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: MyThemes.darkBluishColor,
+        onPressed: () => {Navigator.pushNamed(context, "/cart")},
+        child: Icon(Icons.shopping_cart),
+      ).p16(),
       body: SafeArea(
         child: Container(
           padding: Vx.m24,
@@ -51,7 +56,7 @@ class _HomePageState extends State<HomePage> {
               if (CatalogModel.items.isNotEmpty)
                 CatalogList().expand()
               else
-              CircularProgressIndicator().centered().expand(),
+                CircularProgressIndicator().centered().expand(),
             ],
           ),
         ),
@@ -59,4 +64,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
