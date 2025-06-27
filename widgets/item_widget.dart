@@ -19,7 +19,7 @@ class ItemWidget extends StatelessWidget {
         subtitle: Text(item.des),
         trailing: Text(
           "\$${item.price.toString()}",
-          style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
     );

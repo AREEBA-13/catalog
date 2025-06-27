@@ -4,7 +4,6 @@ import 'dart:convert';
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_list.dart';
-import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 // This is the main home page of the application
@@ -38,13 +37,14 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final dummyList = List.generate(100, (index) => CatalogModel.items[0]);
     return Scaffold(
-      backgroundColor: MyThemes.creamColor,
+      backgroundColor: context.theme.canvasColor,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: MyThemes.darkBluishColor,
+        backgroundColor: Theme.of(
+          context,
+        ).textButtonTheme.style?.backgroundColor?.resolve({}),
         onPressed: () => {Navigator.pushNamed(context, "/cart")},
-        child: Icon(Icons.shopping_cart),
+        child: Icon(Icons.shopping_cart, color: Colors.white),
       ).p16(),
       body: SafeArea(
         child: Container(

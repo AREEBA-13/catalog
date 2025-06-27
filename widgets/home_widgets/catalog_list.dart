@@ -16,19 +16,18 @@ class CatalogList extends StatelessWidget {
       itemBuilder: (context, index) {
         final catalog = CatalogModel.items[index];
         return InkWell(
-          onTap: () => 
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomeDetailPage(catalog: catalog),
-              ),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomeDetailPage(catalog: catalog),
             ),
-          child: CatalogItem(catalog: catalog));
+          ),
+          child: CatalogItem(catalog: catalog),
+        );
       },
     );
   }
 }
-
 
 class CatalogItem extends StatelessWidget {
   final Item catalog;
@@ -42,10 +41,8 @@ class CatalogItem extends StatelessWidget {
         children: [
           Hero(
             tag: Key(catalog.id.toString()),
-            child: CatalogImage(
-              image: catalog.image
-              )
-              ),
+            child: CatalogImage(image: catalog.image),
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,22 +53,34 @@ class CatalogItem extends StatelessWidget {
                     .xl2
                     .bold
                     .make(),
-                catalog.des.text.textStyle(context.captionStyle).make(),
+                catalog.des.text
+                    .color(Colors.white)
+                    .textStyle(context.captionStyle)
+                    .make(),
                 10.heightBox,
                 OverflowBar(
                   alignment: MainAxisAlignment.spaceBetween,
                   spacing: 8.0,
                   children: [
-                    "\$${catalog.price}".text.bold.xl.make(),
+                    "\$${catalog.price}".text
+                        .color(Colors.white)
+                        .bold
+                        .xl
+                        .make(),
                     ElevatedButton(
                       onPressed: () {},
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all(
-                          MyThemes.darkBluishColor,
+                          Theme.of(context)
+                                  .textButtonTheme
+                                  .style
+                                  ?.backgroundColor
+                                  ?.resolve({}) ??
+                              MyThemes.lightBluishColor,
                         ),
                         shape: WidgetStateProperty.all(StadiumBorder()),
                       ),
-                      child: "Add to Cart".text.make(),
+                      child: "Add to Cart".text.color(Colors.white).make(),
                     ),
                   ],
                 ).pOnly(right: 8.0),
@@ -80,6 +89,6 @@ class CatalogItem extends StatelessWidget {
           ),
         ],
       ),
-    ).white.rounded.height(150).make().py12();
+    ).color(context.cardColor).rounded.height(150).make().py12();
   }
 }

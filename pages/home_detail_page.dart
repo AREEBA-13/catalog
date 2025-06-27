@@ -15,7 +15,7 @@ class HomeDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.transparent),
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.theme.cardColor,
         child: OverflowBar(
           alignment: MainAxisAlignment.spaceBetween,
           spacing: 8.0,
@@ -25,16 +25,19 @@ class HomeDetailPage extends StatelessWidget {
               onPressed: () {},
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.all(
-                  MyThemes.darkBluishColor,
+                  Theme.of(
+                        context,
+                      ).textButtonTheme.style?.backgroundColor?.resolve({}) ??
+                      MyThemes.lightBluishColor,
                 ),
                 shape: WidgetStateProperty.all(StadiumBorder()),
               ),
-              child: "Add to Cart".text.make(),
-            ).wh(120, 50),
+              child: "Add to Cart".text.color(Colors.white).make(),
+            ).wh(140, 50),
           ],
         ).p24(),
       ),
-      backgroundColor: MyThemes.creamColor,
+      backgroundColor: context.theme.canvasColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -55,7 +58,7 @@ class HomeDetailPage extends StatelessWidget {
                 arcType: VxArcType.convey,
                 edge: VxEdge.top,
                 child: Container(
-                  color: Colors.white,
+                  color: context.theme.cardColor,
                   width: context.screenWidth,
                   child: Column(
                     children: [
@@ -70,6 +73,7 @@ class HomeDetailPage extends StatelessWidget {
                               "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
                               "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
                           .text
+                          .color(Theme.of(context).textTheme.bodyLarge?.color)
                           .textStyle(context.captionStyle)
                           .make()
                           .p16(),
