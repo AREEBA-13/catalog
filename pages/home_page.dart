@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/core/store.dart';
+import 'package:flutter_application_1/models/cart.dart';
 import 'dart:convert';
 import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalog_list.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-// This is the main home page of the application
+//import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  
   @override
   void initState() {
     super.initState();
@@ -37,15 +39,28 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = (VxState.store as MyStore).cart;
     return Scaffold(
       backgroundColor: context.theme.canvasColor,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(
-          context,
-        ).textButtonTheme.style?.backgroundColor?.resolve({}),
-        onPressed: () => {Navigator.pushNamed(context, "/cart")},
-        child: Icon(Icons.shopping_cart, color: Colors.white),
-      ).p16(),
+      floatingActionButton: VxBuilder<MyStore>(
+        mutations: {AddMutation, RemoveMutation},
+        builder: (context, store, status) =>
+            FloatingActionButton(
+              backgroundColor: Theme.of(
+                context,
+              ).textButtonTheme.style?.backgroundColor?.resolve({}),
+              onPressed: () => {Navigator.pushNamed(context, "/cart")},
+              child: Icon(Icons.shopping_cart, color: Colors.white),
+            ).badge(
+              color: Vx.red700,
+              size: 20,
+              count: cart.items.length,
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+      ),
       body: SafeArea(
         child: Container(
           padding: Vx.m24,
