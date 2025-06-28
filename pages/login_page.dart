@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -20,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
-      if (!mounted) return; // Check if the widget is still mounted
+      if (!mounted) return;
       await Navigator.pushNamed(context, MyRoutes.homeRoute);
       setState(() {
         changeButton = false;
@@ -30,8 +31,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Material(
-      color: Color.fromRGBO(240, 240, 240, 1),
+      color: Theme.of(context).canvasColor,
       child: SingleChildScrollView(
         child: Form(
           key: _formKey,
@@ -45,19 +48,16 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text("Your personal digital recipe book"),
               SizedBox(height: 10.0),
-
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 16.0,
-                  horizontal: 32.0,
-                ),
-
+                padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
                 child: Column(
                   children: [
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: "Username",
-                        hintText: " Enter Username",
+                        labelStyle: textTheme.titleMedium, // Label styled
+                        hintText: "Enter Username",
+                        hintStyle: textTheme.bodyMedium?.copyWith(color: Colors.grey),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -70,64 +70,48 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {});
                       },
                     ),
-
                     TextFormField(
                       obscureText: true,
                       decoration: InputDecoration(
                         labelText: "Password",
-                        hintText: " Enter Password",
+                        labelStyle: textTheme.titleMedium,
+                        hintText: "Enter Password",
+                        hintStyle: textTheme.bodyMedium?.copyWith(color: Colors.grey),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return "Password can't be empty";
                         } else if (value.length < 6) {
-                          return "Password lenght must be atleast 6";
+                          return "Password must be at least 6 characters";
                         }
                         return null;
                       },
                     ),
-
                     SizedBox(height: 30.0),
-
-                    Material(
-                      color: const Color.fromARGB(255, 30, 121, 65),
-
-                      // shape: changeButton?
-                      // BoxShape.circle:
-                      // BoxShape.rectangle
-                      borderRadius: BorderRadius.circular(
-                        changeButton ? 50 : 8,
-                      ),
-                      child: InkWell(
-                        onTap: () => moveToHome(),
-                        child: AnimatedContainer(
-                          duration: Duration(seconds: 1),
-                          height: 50,
-                          width: changeButton ? 50 : 150,
-                          alignment: Alignment.center,
-                          child: changeButton
-                              ? Icon(
-                                  Icons.done,
-                                  color: Color.fromRGBO(255, 255, 255, 1),
-                                )
-                              : Text(
-                                  "LOGIN",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                    TextButton(
+                      onPressed: moveToHome,
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
                         ),
                       ),
+                      child: AnimatedContainer(
+                        duration: Duration(seconds: 1),
+                        height: 50,
+                        width: changeButton ? 50 : 150,
+                        alignment: Alignment.center,
+                        child: changeButton
+                            ? Icon(Icons.done, color: Colors.white)
+                            : Text(
+                                "LOGIN",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                      ),
                     ),
-
-                    // ElevatedButton(
-                    //   style: TextButton.styleFrom(minimumSize: Size(150, 40)),
-                    //   onPressed: () {
-                    //     Navigator.pushNamed(context, MyRoutes.homeRoute);
-                    //   },
-                    //   child: Text("LOGIN"),
-                    // ),
                   ],
                 ),
               ),
