@@ -15,9 +15,7 @@ void main() {
 
   // Set it in the singleton cart model
   CartModel().catalog = catalog;
-  runApp(VxState(
-    store: MyStore(),
-    child: MyApp()));
+  runApp(VxState(store: MyStore(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
