@@ -23,7 +23,7 @@ class CartPage extends StatelessWidget {
 
 class CartTotal extends StatelessWidget {
   final cart = CartModel();
-   CartTotal({super.key});
+  CartTotal({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,18 +64,23 @@ class _CartListState extends State<CartList> {
   final cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: cart.items.length,
-      itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: () {
-            // Handle delete action
-          },
-        ),
-        title: cart.items[index].name.text.make(),
-      ),
-    );
+    return cart.items.isEmpty
+        ? "Nothing To show".text.xl3.makeCentered()
+        : ListView.builder(
+            itemCount: cart.items.length,
+            itemBuilder: (context, index) => ListTile(
+              leading: Icon(Icons.done),
+              trailing: IconButton(
+                icon: Icon(Icons.delete),
+                onPressed: () {
+                  cart.remove(cart.items[index]);
+                  setState(() {
+                    
+                  });
+                },
+              ),
+              title: cart.items[index].name.text.make(),
+            ),
+          );
   }
 }
