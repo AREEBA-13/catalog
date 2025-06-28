@@ -56,8 +56,8 @@ class CatalogItem extends StatelessWidget {
                     .bold
                     .make(),
                 catalog.des.text
-                    .color(Colors.white)
                     .textStyle(context.captionStyle)
+                    .textStyle(context.textTheme.bodyMedium)
                     .make(),
                 10.heightBox,
                 OverflowBar(
@@ -65,7 +65,7 @@ class CatalogItem extends StatelessWidget {
                   spacing: 8.0,
                   children: [
                     "\$${catalog.price}".text
-                        .color(Colors.white)
+                        .textStyle(context.textTheme.bodyMedium)
                         .bold
                         .xl
                         .make(),
