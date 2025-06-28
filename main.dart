@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/cart.dart';
+import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/pages/cart_page.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
@@ -6,6 +8,11 @@ import 'package:flutter_application_1/widgets/themes.dart';
 import 'package:flutter_application_1/utils/routes.dart';
 
 void main() {
+  // Load the global catalog instance once
+  final catalog = CatalogModel();
+
+  // Set it in the singleton cart model
+  CartModel().catalog = catalog;
   runApp(MyApp());
 }
 
