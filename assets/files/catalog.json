@@ -1,0 +1,164 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Smartphone",
+      "des": "Latest 5G smartphone with 128GB storage and 8GB RAM.",
+      "price": 699,
+      "color": "#33505a",
+      "image": "assets/images/smartphone.jpeg"
+    },
+    {
+      "id": "2",
+      "name": "Laptop",
+      "des": "Powerful laptop with Intel i7 processor and 16GB RAM.",
+      "price": 1199,
+      "color": "#00acc1",
+      "image": "assets/images/laptop.jpeg"
+    },
+    {
+      "id": "3",
+      "name": "Wireless Headphones",
+      "des": "Noise-cancelling over-ear headphones with 30 hours battery life.",
+      "price": 199,
+      "color": "#f44336",
+      "image": "assets/images/headphone.jpeg"
+    },
+    {
+      "id": "4",
+      "name": "Smartwatch",
+      "des": "Fitness-focused smartwatch with heart rate and GPS tracking.",
+      "price": 249,
+      "color": "#ff9800",
+      "image": "assets/images/smartwatch.jpeg"
+    },
+    {
+      "id": "5",
+      "name": "Bluetooth Speaker",
+      "des": "Portable waterproof Bluetooth speaker with deep bass.",
+      "price": 99,
+      "color": "#4caf50",
+      "image": "assets/images/speaker.jpeg"
+    },
+    {
+      "id": "6",
+      "name": "Tablet",
+      "des": "10-inch display tablet with 64GB storage and stylus support.",
+      "price": 499,
+      "color": "#9c27b0",
+      "image": "assets/images/tablet.jpeg"
+    },
+    {
+      "id": "7",
+      "name": "Gaming Console",
+      "des": "Next-gen console with 1TB SSD and 4K gaming.",
+      "price": 499,
+      "color": "#3f51b5",
+      "image": "assets/images/gaming.jpeg"
+    },
+    {
+      "id": "8",
+      "name": "DSLR Camera",
+      "des": "Professional DSLR camera with 24MP lens and 4K video recording.",
+      "price": 899,
+      "color": "#607d8b",
+      "image": "assets/images/DSLR.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Wireless Mouse",
+      "des": "Ergonomic wireless mouse with adjustable DPI.",
+      "price": 49,
+      "color": "#795548",
+      "image": "assets/images/mouse.jpeg"
+    },
+    {
+      "id": "10",
+      "name": "Mechanical Keyboard",
+      "des": "RGB backlit mechanical keyboard with blue switches.",
+      "price": 120,
+      "color": "#e91e63",
+      "image": "assets/images/keyboard.jpeg"
+    },
+    {
+      "id": "11",
+      "name": "Smart TV",
+      "des": "55-inch 4K Ultra HD Smart TV with HDR10 support.",
+      "price": 699,
+      "color": "#2196f3",
+      "image": "assets/images/TV.jpeg"
+    },
+    {
+      "id": "12",
+      "name": "Air Conditioner",
+      "des": "1.5 Ton split AC with inverter technology.",
+      "price": 599,
+      "color": "#009688",
+      "image": "assets/images/airconditioner.jpeg"
+    },
+    {
+      "id": "13",
+      "name": "Refrigerator",
+      "des": "Double-door refrigerator with frost-free cooling.",
+      "price": 799,
+      "color": "#ff5722",
+      "image": "assets/images/fridge.jpeg"
+    },
+    {
+      "id": "14",
+      "name": "Microwave Oven",
+      "des": "23L convection microwave oven with grill function.",
+      "price": 199,
+      "color": "#8bc34a",
+      "image": "assets/images/oven.jpeg"
+    },
+    {
+      "id": "15",
+      "name": "Washing Machine",
+      "des": "6.5kg fully automatic top load washing machine.",
+      "price": 399,
+      "color": "#cddc39",
+      "image": "assets/images/washing_machine.jpeg"
+    },
+    {
+      "id": "16",
+      "name": "Shoes",
+      "des": "Stylish running shoes with breathable mesh.",
+      "price": 89,
+      "color": "#ffeb3b",
+      "image": "assets/images/shoes.jpeg"
+    },
+    {
+      "id": "17",
+      "name": "Backpack",
+      "des": "Durable laptop backpack with multiple compartments.",
+      "price": 59,
+      "color": "#9e9e9e",
+      "image": "assets/images/backpack.jpeg"
+    },
+    {
+      "id": "18",
+      "name": "Sunglasses",
+      "des": "UV-protection aviator sunglasses for men and women.",
+      "price": 39,
+      "color": "#607d8b",
+      "image": "assets/images/sunglasses.jpeg"
+    },
+    {
+      "id": "19",
+      "name": "Wristband",
+      "des": "Fitness wristband with step counter and sleep tracker.",
+      "price": 29,
+      "color": "#ff9800",
+      "image": "assets/images/wristband.jpeg"
+    },
+    {
+      "id": "20",
+      "name": "Jacket",
+      "des": "Winter jacket with hood and water-resistant fabric.",
+      "price": 149,
+      "color": "#673ab7",
+      "image": "assets/images/jacket.jpeg"
+    }
+  ]
+}
